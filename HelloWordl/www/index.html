@@ -39,6 +39,10 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
     <title>Hello World</title>
 </head>
 
@@ -48,41 +52,16 @@
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
-            <button onclick="bellFunction()">Click me for sound</button>
-            <button onclick="vibrateFunction()">Click me for vibration</button>
+            <a onclick="showConfirm()">Run Confirm</a>
+            <input type="button" value="Click" onclick="showConfirm()" />
+            <button onclick="showConfirm()">Show Confirm</button>
         </div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
-    <script type="text/javascript" src="cordova.js">
-    	function bellFunction() {
-    		navigator.notification.beep(10);
-    	}
-    </script>
-    <script type="text/javascript" src="cordova.js">
-    	function bellFunction() {
-    		navigator.notification.vibrate(2500);
-    	}
-    </script>
-    <script type="text/javascript" src="cordova.js">
-    	navigator.notification.confirm(
-    		'Do you want sound or vibration?'),
-    		onConfirm,
-    		'Choice',
-    		['Sound', 'Vibration']
-    	);
-		
-		function onConfirm(buttonIndex) {
-			alert('You selected ' + buttonIndex);
-			if(buttonIndex==2){
-				navigator.notification.vibrate(5000);
-			} else {
-				navigator.notification.beep(10);
-			}
-		}
+    <script type="text/javascript">
+    	showConfirm();
     </script>
 </body>
 

@@ -16,5 +16,7 @@
   <author href="https://build.phonegap.com" email="support@phonegap.com">
       Kevin Mbumbe
   </author>
+  <plugin spec="https://github.com/apache/cordova-plugin-dialogs" />
+  <plugin spec="https://github.com/apache/cordova-plugin-inappbrowser" />
 
 </widget>

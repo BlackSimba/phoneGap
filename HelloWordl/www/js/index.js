@@ -47,3 +47,22 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
+function showConfirm() {
+    navigator.notification.confirm(
+        ('Do you want sound or vibration?'),
+        onConfirm,
+        'Choice',
+        ['Sound', 'Vibration'],
+    );
+}
+        
+function onConfirm(buttonIndex) {
+    alert('You selected ' + buttonIndex);
+    if(buttonIndex==2){
+        navigator.notification.vibrate(5000);
+    } else {
+        navigator.notification.beep(10);
+    }
+}
