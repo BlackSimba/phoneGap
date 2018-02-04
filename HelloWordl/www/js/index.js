@@ -63,6 +63,6 @@ function onConfirm(buttonIndex) {
     if(buttonIndex==2){
         navigator.notification.vibrate(5000);
     } else {
-        navigator.notification.beep(10);
+        navigator.notification.beep(2);
     }
 }
