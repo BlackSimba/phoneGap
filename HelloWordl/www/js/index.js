@@ -60,8 +60,9 @@ function showConfirm() {
         
 function onConfirm(buttonIndex) {
     alert('You selected ' + buttonIndex);
-    if(buttonIndex==2){
-        navigator.notification.vibration(5000);
+    if(buttonIndex==2) {
+        navigator.vibrate(2500);
+        //navigator.notification.vibration(2500);
     } else {
         navigator.notification.beep(2);
     }
