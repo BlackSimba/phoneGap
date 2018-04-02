@@ -1,0 +1,294 @@
+<!-- https://www.youtube.com/watch?v=iFGuDrsW-Wg
+	add to biblography -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <style type="text/css">
+        	li span {
+    			width:100%;
+			    white-space: normal;
+			    word-break: break-word;
+			}
+        </style>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/databaseHandler.js"></script>
+		<script type="text/javascript" src="js/propertyHandler.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+
+        <title>RentalZApp</title>
+    </head>
+    <body>
+
+    	<div data-role="page" id="WelcomePage">
+			<script type="text/javascript">
+				logOut2();
+			</script>
+			<div align="center" style="position:absolute; top:30%; padding:15px;" data-role="content">
+				<!-- write info about app here -->
+				<h1>Welcome Home to RentalZApp</h1>
+				<p>The Only Way to Find Your Next Home</p>
+				<div data-role="fieldcontainer">
+					<a href="#homePage" data-role="button" id="btnNext" class = "ui-btn-icon-left">Home Sweet Home</a>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+		    	<P align="center">RentalZApp</P>
+			</div><!-- /footer for home -->
+		</div><!-- closing div for data-role page -->
+
+    	<div data-role="page" id="homePage">
+    		<script type="text/javascript">
+				logOut2();
+			</script>
+	    	<div data-role="header">
+	        	<h1>Home</h1> 
+			</div>
+			<!-- /header -->
+			<div data-role="main" class="ui-content"> 
+				<!--  -->
+				<form name="form1" class="ui-filterable">
+					<input  name="pSearch" id="pSearch" data-type="search"  />
+				</form>
+
+				<p style="color:white; font-size:small;"><a style="color:#f5f5f5; text-decoration:none;" href="#staffLoginPage">Link</a></p>
+					<!-- consider changing list to table for displaying info from DB
+
+					maybe have a device ready listener function to start DB --> 
+				
+				<ul data-role="listview" data-filter="true" data-input="#pSearch" data-inset="true" data-filter-placeholder="Search Property Here By Name..." id="lstProp">
+				</ul>
+				<!-- add a hidden link somewhere so staff can click to login or register other staff --> 
+		 	</div><!-- /content --> 
+			<div data-role="footer" data-position="fixed">
+		    	<div data-role="navbar">
+					<ul>
+						<li><a href="#homePage" data-icon="home" class="ui-btn-active ui-state-persist" data-iconpos="top">Home</a></li>
+						<li><a href="#aboutPage" data-icon="info" data-iconpos="top">About</a></li>
+					</ul>
+				</div>  
+		  	</div><!-- /footer for home -->
+		</div><!-- closing div for data-role page -->
+
+		<div data-role="page" id="propertyPage" data-add-back-btn="true">
+			<script type="text/javascript">
+				logOut2();
+			</script>
+			<div data-role="header" data-add-back-btn="true">
+				<h1>Property View</h1>
+				<a href="#homePage" data-icon="home" class="ui-btn-right">Home</a>
+			</div>
+			<div data-role="content">
+					<!-- load info from DB and display here -->
+				<form name="form2" action="index.html" method="post" onsubmit="">
+						
+				</form>
+				<ul data-role="listview" data-inset="true" id="lstProp2">
+				</ul>
+			</div>
+			<div data-role="footer" data-position="fixed">
+		    	<P align="center">RentalZApp</P>  
+			</div><!-- /footer for home -->
+		</div><!-- closing div for data-role page -->
+
+		<div data-role="page" id="aboutPage" data-add-back-btn="true">
+			<script type="text/javascript">
+				logOut2();
+			</script>
+			<div data-role="header" data-add-back-btn="true">
+				<h1>About</h1>
+				<a href="#homePage" data-icon="home" class="ui-btn-right">Home</a>
+			</div>
+			<div data-role="content">
+				<!-- write info about app here -->
+				<h1>Welcome Home to RentalZApp</h1>
+				<p>This application is designed to help you find your new home, it displays a range of property for you to search from and once you have selected a property you will be able to obtain as much information regarding that property as possible. We find the properties for you and connect you to the appropriate people, in the mean time just put up your feet, make a cup of tea, relax and rememeber mi casa es su casa</p>
+			</div>
+			<div data-role="footer" data-position="fixed">
+		    	<div data-role="navbar">
+					<ul>
+						<li><a href="#homePage" data-icon="home" data-iconpos="top">Home</a></li>
+						<li><a href="#aboutPage" data-icon="info" class="ui-btn-active ui-state-persist" data-iconpos="top">About</a></li>
+					</ul>
+				</div>  
+			</div><!-- /footer for home -->
+		</div><!-- closing div for data-role page -->
+
+		<div data-role="page" id="staffLoginPage" data-add-back-btn="true">
+			<script type="text/javascript">
+				$(document).on("pageinit", "#staffLoginPage", function(){
+					logOut2();
+				});
+			</script>
+			<div data-role="header" data-add-back-btn="true">
+				<h1>Staff Login</h1>
+			</div>
+			<div data-role="content">
+				<form name="form3" id="form3">
+
+					<div data-role="fieldcontainer">
+						<input type="text" name="userName" id="userName" value="" placeholder="Username" />
+					</div>
+
+					<div data-role="fieldcontainer">
+						<input type="text" name="password" id="password" value="" placeholder="Password">
+					</div>
+
+					<div data-role="fieldcontainer">
+						<a href="#" data-role="button" id="btnLog" onclick="propLog()">Login</a>
+					</div>
+
+				</form>
+			</div><!-- content div -->
+			<div data-role="footer" data-position="fixed">
+				<P align="center">RentalZApp</P>
+			</div>
+		</div><!-- closing div for data-role page -->
+
+		<div data-role="page" id="optionsPage">
+			<script type="text/javascript">
+				$(document).on("pageinit", "#homePage", function(){
+					loginPageLoad();
+				});
+			</script>
+			<div data-role="header">
+				<h1>Options</h1>
+				<a href="#homePage" data-icon="home" class="ui-btn-right">Home</a>
+			</div>
+			<div data-role="content">
+				<!-- write info about app here -->
+				<p>Below are options of what you can do now that you have logged in, you can choose to either delete properties or add new properties</p>
+				<p>Please pick an option below</p>
+				<p>If there is nothing you wish to do, then please sign out</p>
+				<div data-role="fieldcontainer">
+					<a href="#" data-role="button" data-icon="delete" id="btnAdd" class = "ui-btn-icon-left" onclick="logOut()">Logout</a>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+		    	<div data-role="navbar">
+					<ul>
+						<li><a href="#propDelPage" data-icon="delete" data-iconpos="top">Delete Property</a></li>
+						<li><a href="#propAddPage" data-icon="add" data-iconpos="top">Add Property</a></li>
+					</ul>
+				</div>  
+			</div><!-- /footer for home -->
+		</div><!-- closing div for data-role page -->
+
+		<div data-role="page" id="propDelPage" data-add-back-btn="true">
+			<script type="text/javascript">
+				$(document).on("pageinit", "#homePage", function(){
+					loginPageLoad();
+				});
+				
+			</script>
+			<div data-role="header" data-add-back-btn="true">
+				<h1>Property Delete</h1>
+				<a href="#homePage" data-icon="home" class="ui-btn-right">Home</a>
+			</div>
+			<div data-role="content">
+					<!-- load info from DB and display here -->
+				<form name="formDel" action="index.html" method="post" onsubmit="">
+					<input  name="pSearch" id="pSearch" data-type="search"  />
+				</form>
+				<ul data-role="listview" data-filter="true" data-input="#pSearch" data-inset="true" data-filter-placeholder="Search Property Here..." id="lstProp4">
+				</ul>
+				<div data-role="fieldcontainer">
+						<a href="#" data-role="button" data-icon="delete" id="btnAdd" class = "ui-btn-icon-left" onclick="logOut()">Logout</a>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<P align="center">RentalZApp</P> 
+			</div><!-- /footer for home -->
+		</div><!-- closing div for data-role page -->
+
+		<div data-role="page" id="propAddPage" data-add-back-btn="true">
+			<script type="text/javascript">
+				$(document).on("pageinit", "#homePage", function(){
+					loginPageLoad();
+				});
+				
+			</script>
+			<div data-role="header" data-add-back-btn="true">
+				<h1>Property Add</h1>
+			</div>
+			<div data-role="content">
+				<ul data-role="listview" data-inset="true" id="lstProp3">
+				</ul>
+				<form name="form4" id="form4">
+
+					<div data-role="fieldcontainer"> 
+						<select name="propSelect" id="propSelect">
+							<option value="" disabled selected hidden>Please Select Property</option>
+							<option value="Flat">Flat</option>
+							<option value="House">House</option>
+							<option value="Bungalow">Bungalow</option>
+						</select>
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<select name="bedSelect" id="bedSelect">
+							<option value="" disabled selected hidden>Please Select Number of Bedrooms</option>
+							<option value="Studio">Studio</option>
+							<option value="One">One</option>
+							<option value="Two">Two</option>
+							<option value="Three">Three</option>
+							<option value="Four">Four</option>
+							<option value="Five">Five</option>
+						</select>
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<input data-role="date" data-inline="true" name="dateAdd" id="dateAdd" class="required" type="date" value="" data-clear-btn="true" />
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<input type="time" name="timeAdd" id="timeAdd" value="" data-clear-btn="true" />
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<input type="text" name="monthRent" id="monthRent" value="" placeholder="Monthly Rent in £00.00 format" />
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<select name="furSelect" id="furSelect">
+							<option value="" disabled selected hidden>Please Select Furniture</option>
+							<option value="Furnished">Furnished</option>
+							<option value="Unfurnished">Unfurnished</option>
+							<option value="Part Furnished">Part Furnished</option>
+						</select>
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<textarea name="noteArea" id="noteArea" placeholder="Enter any relevant property notes here"></textarea>
+					</div>
+
+					<div data-role="fieldcontainer">
+						<input type="text" name="propName" id="propName" value="" placeholder="Name of Property" data-clear-btn="true" />
+					</div>
+
+					<div data-role="fieldcontainer"> 
+						<input Type="text" name="reporterName" id="reporterName" value="" placeholder="Name of Reporter" data-clear-btn="true" />
+					</div>
+
+					<div data-role="fieldcontainer">
+						<a href="#" data-role="button" data-icon="add" id="btnAdd" class = "ui-btn-icon-left" onclick="addProp()">Add Property</a>
+					</div>
+					<div data-role="fieldcontainer">
+						<a href="#" data-role="button" data-icon="delete" id="btnAdd" class = "ui-btn-icon-left" onclick="logOut()">Logout</a>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<P align="center">RentalZApp</P>
+			</div>
+		</div><!-- closing div for data-role page -->
+
+
+    </body>
+</html>
