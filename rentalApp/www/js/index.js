@@ -183,6 +183,7 @@ function addProp() {
                     $("#noteArea").val("");
                     $("#monthRent").val("£");
                     $("#propName").val("");
+                    window.location.reload();
                 } else {
                     alert("There was a problem, check that property name is unique");
                     //alert if addition to database is not unique
